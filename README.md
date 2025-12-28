@@ -1,1 +1,0 @@
-# AtCoder_OnlineJudge_System
