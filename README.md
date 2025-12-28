@@ -1,18 +1,21 @@
 # ojj – AtCoder Local Test & Submit Helper
 
-`ojj` is a Bash helper function for competitive programming on **AtCoder**.  
-It integrates **local testing**, **execution time measurement**, **submission via acc**, and **clipboard copy** into a single command.
+`ojj` は、**AtCoder 向け競技プログラミング用の Bash ヘルパー関数**です。  
+ローカルテスト・実行時間計測・提出（acc）・クリップボードコピーを  
+**単一コマンドで一貫して行う**ことを目的としています。
+
+本ツールは、個人の競技プログラミング環境を前提に設計されています。
 
 ---
 
 ## Features
 
-- Run all local testcases automatically
-- Measure execution time for each testcase
-- Block submission if any test fails
-- After All AC:
-  - `y` / `Y` → submit via `acc`
-  - otherwise → copy source code to clipboard
+- すべてのローカルテストケースを自動実行
+- 各テストケースの実行時間を計測
+- 1つでも不正解があれば提出をブロック
+- **All AC 時の挙動を選択可能**
+  - `y` / `Y` → `acc` による提出
+  - その他 → ソースコードをクリップボードへコピー
 
 ---
 
@@ -27,7 +30,7 @@ It integrates **local testing**, **execution time measurement**, **submission vi
 - `bc`
 - `xclip`
 
-### Tools
+### External Tools
 
 - [online-judge-tools (oj)](https://github.com/online-judge-tools/oj)
 - [atcoder-cli (acc)](https://github.com/Tatamo/atcoder-cli)
@@ -36,20 +39,17 @@ It integrates **local testing**, **execution time measurement**, **submission vi
 
 ## Installation
 
-### 1. Install online-judge-tools
+### 1. online-judge-tools のインストール
 
 ```bash
 pip3 install online-judge-tools
-2. Install atcoder-cli
-bash
-コードをコピーする
+2. atcoder-cli のインストールとログイン
 npm install -g atcoder-cli
 acc login
 Directory Structure
-The following directory structure is assumed:
+以下のディレクトリ構成を前提としています。
 
-text
-コードをコピーする
+
 .
 ├── A.cpp
 ├── B.cpp
@@ -58,41 +58,43 @@ text
         ├── sample1.in
         ├── sample1.out
         └── sample2.in
-Testcases are generated using oj:
+テストケースは oj を用いて取得します。
 
-bash
-コードをコピーする
+
 oj d https://atcoder.jp/contests/xxx/tasks/xxx_a
 Usage
-bash
-コードをコピーする
 ojj A.cpp
 Behavior
-If any testcase fails
-→ execution stops immediately
+テスト失敗時
+いずれかのテストケースで不正解が出た時点で即座に終了
 
-If all testcases pass (All AC):
+提出処理は行われません
 
-text
-コードをコピーする
+全テスト通過時（All AC）
+
 Submit? [y/N]:
-y or Y
-→ submit the source code via acc
+y または Y を入力
+→ acc を用いて提出
 
-otherwise
-→ copy the source code to clipboard
+それ以外の入力
+→ ソースコードをクリップボードへコピー
 
-Clipboard copy is useful for:
+クリップボードコピーは、以下の用途を想定しています。
 
-Browser-based submission
+ブラウザからの手動提出
 
-Language switching
+提出言語の切り替え
 
-Manual edits before submission
+提出前の微調整・コメントアウト
 
 Notes
-testcases/<Problem> directory must exist
+testcases/<Problem> ディレクトリが存在する必要があります
 
-_problem_from_file and _atcoder_contest are assumed to be defined externally
+_problem_from_file および _atcoder_contest 関数は
+外部で定義されている前提です
 
-Designed for a personal competitive programming workflow on AtCoder
+AtCoder 向けの 個人ワークフロー最適化を目的としたツールです
+
+License
+This project is intended for personal use.
+Feel free to modify it for your own workflow.
